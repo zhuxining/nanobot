@@ -27,6 +27,7 @@ class ReadFileTool(Tool):
     """Tool to read file contents."""
 
     _MAX_CHARS = 128_000  # ~128 KB — prevents OOM from reading huge files into LLM context
+    _MARKITDOWN_EXTENSIONS = {".docx", ".pdf", ".pptx", ".xlsx"}
 
     def __init__(self, workspace: Path | None = None, allowed_dir: Path | None = None):
         self._workspace = workspace
@@ -38,7 +39,10 @@ class ReadFileTool(Tool):
 
     @property
     def description(self) -> str:
-        return "Read the contents of a file at the given path."
+        return (
+            "Read the contents of a file at the given path. "
+            "Supports plain text and document formats (docx, pdf, pptx, xlsx)."
+        )
 
     @property
     def parameters(self) -> dict[str, Any]:
@@ -63,14 +67,30 @@ class ReadFileTool(Tool):
                     f"Use exec tool with head/tail/grep to read portions."
                 )
 
-            content = file_path.read_text(encoding="utf-8")
+            if file_path.suffix.lower() in self._MARKITDOWN_EXTENSIONS:
+                content = self._read_with_markitdown(file_path)
+            else:
+                content = file_path.read_text(encoding="utf-8")
+
             if len(content) > self._MAX_CHARS:
-                return content[: self._MAX_CHARS] + f"\n\n... (truncated — file is {len(content):,} chars, limit {self._MAX_CHARS:,})"
+                return (
+                    content[: self._MAX_CHARS]
+                    + f"\n\n... (truncated — file is {len(content):,} chars, limit {self._MAX_CHARS:,})"
+                )
             return content
         except PermissionError as e:
             return f"Error: {e}"
         except Exception as e:
             return f"Error reading file: {str(e)}"
+
+    @staticmethod
+    def _read_with_markitdown(file_path: Path) -> str:
+        """Convert document files to Markdown text using markitdown."""
+        from markitdown import MarkItDown
+
+        md = MarkItDown()
+        result = md.convert(str(file_path))
+        return result.text_content
 
 
 class WriteFileTool(Tool):
