@@ -7,6 +7,8 @@ description: Interact with Obsidian vaults using the Obsidian CLI to read, creat
 
 Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
 
+**IMPORTANT**:before running `obsidian create`, read `obsidian vault="MyObsidian" read file="AGENTS"` and follow the rules in it.
+
 ## Command reference
 
 Run `obsidian help` to see all available commands. This is always up to date. Full docs: https://help.obsidian.md/cli
