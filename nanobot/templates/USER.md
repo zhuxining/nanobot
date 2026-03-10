@@ -2,43 +2,26 @@
 
 Information about the user to help personalize interactions.
 
-## Basic Information
+## User Information
 
 - **Name**: (your name)
 - **Timezone**: (your timezone, e.g., UTC+8)
 - **Language**: (preferred language)
 
-## Preferences
-
-### Communication Style
-
-- [ ] Casual
-- [ ] Professional
-- [ ] Technical
-
-### Response Length
-
-- [ ] Brief and concise
-- [ ] Detailed explanations
-- [ ] Adaptive based on question
-
-### Technical Level
-
-- [ ] Beginner
-- [ ] Intermediate
-- [ ] Expert
-
-## Work Context
+## User Context
 
 - **Primary Role**: (your role, e.g., developer, researcher)
 - **Main Projects**: (what you're working on)
 - **Tools You Use**: (IDEs, languages, frameworks)
+- **Technical Level**: (Expert?Intermediate?Beginner?)
+- **Response Length**: (Professional?Concise?Detailed?)
+- **Communication Style**: (Technical? Professional?)
 
 ## Topics of Interest
 
-- 
-- 
-- 
+-
+-
+-
 
 ## Special Instructions
 

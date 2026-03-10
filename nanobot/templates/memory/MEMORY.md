@@ -2,7 +2,7 @@
 
 This file stores important information that should persist across sessions.
 
-## User Information
+## Additional Information about User
 
 (Important facts about the user)
 
@@ -13,6 +13,14 @@ This file stores important information that should persist across sessions.
 ## Project Context
 
 (Information about ongoing projects)
+
+## Installed CLI
+
+(list of installed command-line tools)
+
+## Tool Configuration Notes
+
+(Important configuration details for tools)
 
 ## Important Notes
 
