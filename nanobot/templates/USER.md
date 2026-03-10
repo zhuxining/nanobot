@@ -14,8 +14,8 @@ Information about the user to help personalize interactions.
 - **Main Projects**: (what you're working on)
 - **Tools You Use**: (IDEs, languages, frameworks)
 - **Technical Level**: (Expert?Intermediate?Beginner?)
-- **Response Length**: (Professional?Concise?Detailed?)
-- **Communication Style**: (Technical? Professional?)
+- **Response Length**: (Adaptive based on question?Concise?Detailed?)
+- **Response Preference**: (Technical? Professional?)
 
 ## Topics of Interest
 
