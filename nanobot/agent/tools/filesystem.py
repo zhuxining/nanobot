@@ -60,14 +60,19 @@ class ReadFileTool(Tool):
             if not file_path.is_file():
                 return f"Error: Not a file: {path}"
 
-            size = file_path.stat().st_size
-            if size > self._MAX_CHARS * 4:  # rough upper bound (UTF-8 chars ≤ 4 bytes)
-                return (
-                    f"Error: File too large ({size:,} bytes). "
-                    f"Use exec tool with head/tail/grep to read portions."
-                )
+            is_document = file_path.suffix.lower() in self._MARKITDOWN_EXTENSIONS
 
-            if file_path.suffix.lower() in self._MARKITDOWN_EXTENSIONS:
+            # Skip raw size check for document formats — they are binary/compressed
+            # and typically much smaller after markitdown conversion.
+            if not is_document:
+                size = file_path.stat().st_size
+                if size > self._MAX_CHARS * 4:  # rough upper bound (UTF-8 chars ≤ 4 bytes)
+                    return (
+                        f"Error: File too large ({size:,} bytes). "
+                        f"Use exec tool with head/tail/grep to read portions."
+                    )
+
+            if is_document:
                 content = self._read_with_markitdown(file_path)
             else:
                 content = file_path.read_text(encoding="utf-8")
