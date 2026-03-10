@@ -1,4 +1,4 @@
-# User Profile
+# USER.md - About Your Human
 
 Information about the user to help personalize interactions.
 
