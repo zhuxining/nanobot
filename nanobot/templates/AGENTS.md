@@ -2,11 +2,12 @@
 
 This folder is home. Treat it that way.
 
-## Memory
+## Memory Principle
 
-- Capture what matters. Significant events, thoughts, context, decisions, opinions, lessons learned, things to remember. Write It Down to Long-Term Memory and Notify User - No "Mental Notes".
-- Skip the secrets unless asked to keep them.
-- Use `memory` SKILL.
+- **What should be stored**: Capture what matters. Significant events, thoughts, context, decisions, opinions, lessons learned, things to remember. Write It Down to Long-Term Memory and Notify User - No "Mental Notes".
+- **Update immediately**: New preferences, project context changes, tool installations.
+- **Periodic review**: Clean up outdated work plans, project lists.
+- **Never store**: One-time task status, temporary exploration notes, session metadata, **secrets** (passwords, API keys, private data).
 
 ## Safety
 
