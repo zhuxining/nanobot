@@ -1080,7 +1080,7 @@ wheels = [
 
 [[package]]
 name = "litellm"
-version = "1.82.0"
+version = "1.82.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
@@ -1096,9 +1096,9 @@ dependencies = [
     { name = "tiktoken" },
     { name = "tokenizers" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/6c/00/49bb5c28e0dea0f5086229a2a08d5fdc6c8dc0d8e2acb2a2d1f7dd9f4b70/litellm-1.82.0.tar.gz", hash = "sha256:d388f52447daccbcaafa19a3e68d17b75f1374b5bf2cde680d65e1cd86e50d22", size = 16800355, upload-time = "2026-03-01T02:35:30.363Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/34/bd/6251e9a965ae2d7bc3342ae6c1a2d25dd265d354c502e63225451b135016/litellm-1.82.1.tar.gz", hash = "sha256:bc8427cdccc99e191e08e36fcd631c93b27328d1af789839eb3ac01a7d281890", size = 17197496, upload-time = "2026-03-10T09:10:04.438Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/28/89/eb28bfcf97d6b045c400e72eb047c381594467048c237dbb6c227764084c/litellm-1.82.0-py3-none-any.whl", hash = "sha256:5496b5d4532cccdc7a095c21cbac4042f7662021c57bc1d17be4e39838929e80", size = 14911978, upload-time = "2026-03-01T02:35:26.844Z" },
+    { url = "https://files.pythonhosted.org/packages/57/77/0c6eca2cb049793ddf8ce9cdcd5123a35666c4962514788c4fc90edf1d3b/litellm-1.82.1-py3-none-any.whl", hash = "sha256:a9ec3fe42eccb1611883caaf8b1bf33c9f4e12163f94c7d1004095b14c379eb2", size = 15341896, upload-time = "2026-03-10T09:10:00.702Z" },
 ]
 
 [[package]]
@@ -1675,6 +1675,7 @@ dependencies = [
     { name = "slack-sdk" },
     { name = "slackify-markdown" },
     { name = "socksio" },
+    { name = "tiktoken" },
     { name = "typer" },
     { name = "websocket-client" },
     { name = "websockets" },
@@ -1694,6 +1695,9 @@ matrix = [
     { name = "mistune" },
     { name = "nh3" },
 ]
+wecom = [
+    { name = "wecom-aibot-sdk-python" },
+]
 
 [package.metadata]
 requires-dist = [
@@ -1703,7 +1707,7 @@ requires-dist = [
     { name = "httpx", specifier = ">=0.28.0,<1.0.0" },
     { name = "json-repair", specifier = ">=0.57.0,<1.0.0" },
     { name = "lark-oapi", specifier = ">=1.5.0,<2.0.0" },
-    { name = "litellm", specifier = ">=1.81.5,<2.0.0" },
+    { name = "litellm", specifier = ">=1.82.1,<2.0.0" },
     { name = "loguru", specifier = ">=0.7.3,<1.0.0" },
     { name = "markitdown", extras = ["docx", "pdf", "pptx", "xlsx"], specifier = ">=0.1.5" },
     { name = "matrix-nio", extras = ["e2e"], marker = "extra == 'dev'", specifier = ">=0.25.2" },
@@ -1731,11 +1735,13 @@ requires-dist = [
     { name = "slack-sdk", specifier = ">=3.39.0,<4.0.0" },
     { name = "slackify-markdown", specifier = ">=0.2.0,<1.0.0" },
     { name = "socksio", specifier = ">=1.0.0,<2.0.0" },
+    { name = "tiktoken", specifier = ">=0.12.0,<1.0.0" },
     { name = "typer", specifier = ">=0.20.0,<1.0.0" },
     { name = "websocket-client", specifier = ">=1.9.0,<2.0.0" },
     { name = "websockets", specifier = ">=16.0,<17.0" },
+    { name = "wecom-aibot-sdk-python", marker = "extra == 'wecom'", specifier = ">=0.1.2" },
 ]
-provides-extras = ["matrix", "dev"]
+provides-extras = ["wecom", "matrix", "dev"]
 
 [[package]]
 name = "nh3"
@@ -3403,6 +3409,20 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/a5/8f/aea9c71cc92bf9b6cc0f7f70df8f0b420636b6c96ef4feee1e16f80f75dd/websockets-16.0-pp311-pypy311_pp73-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:0298d07ee155e2e9fda5be8a9042200dd2e3bb0b8a38482156576f863a9d457c", size = 176968, upload-time = "2026-01-10T09:23:41.031Z" },
     { url = "https://files.pythonhosted.org/packages/9a/3f/f70e03f40ffc9a30d817eef7da1be72ee4956ba8d7255c399a01b135902a/websockets-16.0-pp311-pypy311_pp73-win_amd64.whl", hash = "sha256:a653aea902e0324b52f1613332ddf50b00c06fdaf7e92624fbf8c77c78fa5767", size = 178735, upload-time = "2026-01-10T09:23:42.259Z" },
     { url = "https://files.pythonhosted.org/packages/6f/28/258ebab549c2bf3e64d2b0217b973467394a9cea8c42f70418ca2c5d0d2e/websockets-16.0-py3-none-any.whl", hash = "sha256:1637db62fad1dc833276dded54215f2c7fa46912301a24bd94d45d46a011ceec", size = 171598, upload-time = "2026-01-10T09:23:45.395Z" },
+]
+
+[[package]]
+name = "wecom-aibot-sdk-python"
+version = "0.1.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "aiohttp" },
+    { name = "pycryptodome" },
+    { name = "websockets" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/31/e0/12aada55e96b5079ec555618e9fbc81c3b014fd9f89ab31bde8305c89a88/wecom_aibot_sdk_python-0.1.2.tar.gz", hash = "sha256:3c4777d530b15f93b5a42bb3bdf8597810481f8ba8f74089022ad0296b56d40e", size = 20371, upload-time = "2026-03-09T14:23:57.257Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a7/49/f633973cc99db4c7c53665da76df2192f0587fd604603e65374482ba465d/wecom_aibot_sdk_python-0.1.2-py3-none-any.whl", hash = "sha256:be267ea731319c24f025a7ea94ea2bf6edc47214a2d4803be25d519729cbb33f", size = 19792, upload-time = "2026-03-09T14:23:56.219Z" },
 ]
 
 [[package]]
