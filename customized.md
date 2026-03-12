@@ -15,7 +15,7 @@
 | `nanobot/agent/tools/web.py` | 删除 `WebSearchTool` 类 |
 | `nanobot/agent/loop.py` | 移除 `WebSearchTool` 导入、注册及 `brave_api_key` 参数 |
 | `nanobot/agent/subagent.py` | 移除 `WebSearchTool` 导入、注册及 `brave_api_key` 参数 |
-| `nanobot/cli/commands.py` | 移除两处 `brave_api_key` 传参 |
+| `nanobot/cli/commands.py` | 移除所有 `brave_api_key` 传参 |
 | `nanobot/config/schema.py` | 删除 `WebSearchConfig` 类及 `WebToolsConfig.search` 字段 |
 | `README.md` | 移除 Brave Search API key 说明 |
 
@@ -31,10 +31,10 @@
 
 | 文件 | 修改内容 |
 |------|----------|
-| `nanobot/agent/tools/filesystem.py` | 新增 `_MARKITDOWN_EXTENSIONS`、`_read_with_markitdown()` 方法，修改 `execute()` 判断文件后缀 |
+| `nanobot/agent/tools/filesystem.py` | 新增 `_MARKITDOWN_EXTENSIONS`、`_read_with_markitdown()` 方法，在 `execute()` 中优先检测文档格式 |
 | `pyproject.toml` | 新增依赖 `markitdown[docx,pdf,pptx,xlsx]>=0.1.5` |
 
-**合并注意**: main 分支合并时保留此定制，注意 `filesystem.py` 和 `pyproject.toml` 的冲突处理。
+**合并注意**: main 分支合并时保留此定制，注意 `filesystem.py` 和 `pyproject.toml` 的冲突处理。上游已重构 filesystem.py 引入 `_FsTool` 基类和分页功能，markitdown 逻辑已适配新架构。
 
 ---
 
