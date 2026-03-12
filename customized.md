@@ -76,3 +76,19 @@
 | `nanobot/templates/memory/MEMORY.md` | 标题改为 "Additional Information about User"，新增 "Installed CLI" 和 "Tool Configuration Notes" 章节 |
 
 **合并注意**: 这些是模板文件（新用户初始化时使用），main 分支若有模板改动需手动对比取舍。
+
+---
+
+## 6. DashScope tool_choice 兼容性修复（临时）
+
+**原因**: DashScope（通义千问）不支持 `tool_choice="required"`，仅支持 `"auto"` 和 `"none"`。导致 `/new` 命令的 memory consolidation 必定失败，会话无法清除。
+
+**涉及文件**:
+
+| 文件 | 修改内容 |
+|------|----------|
+| `nanobot/agent/memory.py` | `consolidate()` 中 `tool_choice` 从 `"required"` 改为 `"auto"` |
+
+**状态**: 已提交 issue 至上游，等待主分支修复。
+
+**合并注意**: 合并 main 分支时检查是否已在 provider 层修复此兼容性问题。若主分支已修复，可丢弃本定制中 `memory.py` 的 `tool_choice="auto"` 改动.
