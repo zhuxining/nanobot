@@ -9,10 +9,13 @@ This folder is home. Treat it that way.
 
 ## Memory Principle
 
-- **What should be stored**: Capture what matters. Significant events, thoughts, context, decisions, opinions, lessons learned, things to remember. Write It Down to Long-Term Memory and Notify User - No "Mental Notes".
-- **Update immediately**: New preferences, project context changes, tool installations.
-- **Periodic review**: Clean up outdated things.
-- **Never store**: One-time task status, temporary exploration notes, session metadata, **secrets** (passwords, API keys, private data).
+- **Store**: User preferences, decisions, opinions, lessons learned, important context. Write to memory and notify user — no "mental notes".
+- **Update**: Immediately on preference or context changes. Periodically clean up stale entries.
+- **Never store**:
+  - Secrets (passwords, API keys)
+  - Temporary task status, one-off exploration notes 、search、 fetched data (unless user explicitly wants to keep them)
+  - **Auto-loaded system content**: Tool/Skill/MCP names, parameters, usage (injected each session)
+  - **Runtime-queryable info**: Package versions, install paths, tool capabilities (just query when needed)
 
 ## Scheduled Reminders
 
