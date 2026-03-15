@@ -4,22 +4,7 @@
 
 ---
 
-## 1. 添加文档格式读取支持（markitdown）
-
-**原因**: 使 ReadFileTool 支持读取 docx/pdf/pptx/xlsx 文档。
-
-**涉及文件**:
-
-| 文件 | 修改内容 |
-|------|----------|
-| `nanobot/agent/tools/filesystem.py` | 新增 `_MARKITDOWN_EXTENSIONS`、`_read_with_markitdown()` 方法，在 `execute()` 中优先检测文档格式 |
-| `pyproject.toml` | 新增依赖 `markitdown[docx,pdf,pptx,xlsx]>=0.1.5` |
-
-**合并注意**: main 分支合并时保留此定制，注意 `filesystem.py` 和 `pyproject.toml` 的冲突处理。上游已重构 filesystem.py 引入 `_FsTool` 基类和分页功能，markitdown 逻辑已适配新架构。
-
----
-
-## 2. Skills 定制
+## 1. Skills 定制
 
 **原因**: 移除不使用的示例 skills，添加个人使用的 skills。
 
@@ -31,7 +16,7 @@
 
 ---
 
-## 3. 环境文件
+## 2. 环境文件
 
 **新增文件**:
 
@@ -42,7 +27,7 @@
 
 ---
 
-## 4. 模板定制
+## 3. 模板定制
 
 **原因**: 精简和重构默认模板，使其更符合个人使用习惯。
 

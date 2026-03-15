@@ -43,7 +43,6 @@ class ReadFileTool(_FsTool):
 
     _MAX_CHARS = 128_000
     _DEFAULT_LIMIT = 2000
-    _MARKITDOWN_EXTENSIONS = {".docx", ".pdf", ".pptx", ".xlsx"}
 
     @property
     def name(self) -> str:
@@ -53,8 +52,7 @@ class ReadFileTool(_FsTool):
     def description(self) -> str:
         return (
             "Read the contents of a file. Returns numbered lines. "
-            "Use offset and limit to paginate through large files. "
-            "Supports document formats (docx, pdf, pptx, xlsx)."
+            "Use offset and limit to paginate through large files."
         )
 
     @property
@@ -84,16 +82,6 @@ class ReadFileTool(_FsTool):
                 return f"Error: File not found: {path}"
             if not fp.is_file():
                 return f"Error: Not a file: {path}"
-
-            # Document formats: convert via markitdown
-            if fp.suffix.lower() in self._MARKITDOWN_EXTENSIONS:
-                content = self._read_with_markitdown(fp)
-                if len(content) > self._MAX_CHARS:
-                    return (
-                        content[: self._MAX_CHARS]
-                        + f"\n\n... (truncated — file is {len(content):,} chars, limit {self._MAX_CHARS:,})"
-                    )
-                return content
 
             all_lines = fp.read_text(encoding="utf-8").splitlines()
             total = len(all_lines)
@@ -129,15 +117,6 @@ class ReadFileTool(_FsTool):
             return f"Error: {e}"
         except Exception as e:
             return f"Error reading file: {e}"
-
-    @staticmethod
-    def _read_with_markitdown(file_path: Path) -> str:
-        """Convert document files to Markdown text using markitdown."""
-        from markitdown import MarkItDown
-
-        md = MarkItDown()
-        result = md.convert(str(file_path))
-        return result.text_content
 
 
 # ---------------------------------------------------------------------------
