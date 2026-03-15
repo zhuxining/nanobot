@@ -4,26 +4,7 @@
 
 ---
 
-## 1. 移除 WebSearchTool（Brave Search）
-
-**原因**: 不使用 Brave Search，移除相关功能以精简代码。
-
-**涉及文件**:
-
-| 文件 | 修改内容 |
-|------|----------|
-| `nanobot/agent/tools/web.py` | 删除 `WebSearchTool` 类 |
-| `nanobot/agent/loop.py` | 移除 `WebSearchTool` 导入、注册及 `brave_api_key` 参数 |
-| `nanobot/agent/subagent.py` | 移除 `WebSearchTool` 导入、注册及 `brave_api_key` 参数 |
-| `nanobot/cli/commands.py` | 移除所有 `brave_api_key` 传参 |
-| `nanobot/config/schema.py` | 删除 `WebSearchConfig` 类及 `WebToolsConfig.search` 字段 |
-| `README.md` | 移除 Brave Search API key 说明 |
-
-**合并注意**: 若 main 分支对上述文件有改动涉及 `WebSearchTool`/`brave_api_key`，合并时需丢弃这些部分。
-
----
-
-## 2. 添加文档格式读取支持（markitdown）
+## 1. 添加文档格式读取支持（markitdown）
 
 **原因**: 使 ReadFileTool 支持读取 docx/pdf/pptx/xlsx 文档。
 
@@ -38,7 +19,7 @@
 
 ---
 
-## 3. Skills 定制
+## 2. Skills 定制
 
 **原因**: 移除不使用的示例 skills，添加个人使用的 skills。
 
@@ -51,7 +32,7 @@
 
 ---
 
-## 4. 环境文件
+## 3. 环境文件
 
 **新增文件**:
 
@@ -62,7 +43,7 @@
 
 ---
 
-## 5. 模板定制
+## 4. 模板定制
 
 **原因**: 精简和重构默认模板，使其更符合个人使用习惯。
 
@@ -76,19 +57,3 @@
 | `nanobot/templates/memory/MEMORY.md` | 标题改为 "Additional Information about User"，新增 "Installed CLI" 和 "Tool Configuration Notes" 章节 |
 
 **合并注意**: 这些是模板文件（新用户初始化时使用），main 分支若有模板改动需手动对比取舍。
-
----
-
-## 6. DashScope tool_choice 兼容性修复（临时）
-
-**原因**: DashScope（通义千问）不支持 `tool_choice="required"`，仅支持 `"auto"` 和 `"none"`。导致 `/new` 命令的 memory consolidation 必定失败，会话无法清除。
-
-**涉及文件**:
-
-| 文件 | 修改内容 |
-|------|----------|
-| `nanobot/agent/memory.py` | `consolidate()` 中 `tool_choice` 从 `"required"` 改为 `"auto"` |
-
-**状态**: 已提交 issue 至上游，等待主分支修复。
-
-**合并注意**: 合并 main 分支时检查是否已在 provider 层修复此兼容性问题。若主分支已修复，可丢弃本定制中 `memory.py` 的 `tool_choice="auto"` 改动.
