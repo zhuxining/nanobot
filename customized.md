@@ -25,7 +25,7 @@
 
 **修改内容**:
 
-- **删除**: `clawhub/SKILL.md`、`skill-creator/SKILL.md`、`summarize/SKILL.md`、`weather/SKILL.md`
+- **删除**: `clawhub/SKILL.md`、`skill-creator/*`、`summarize/SKILL.md`、`weather/SKILL.md`
 - **新增**: `browser-use/SKILL.md`
 
 **合并注意**: main 分支如新增/修改 skills，按需保留或忽略即可。skills 目录各文件相互独立。
